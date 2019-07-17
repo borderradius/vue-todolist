@@ -28,23 +28,20 @@ export default {
     // 인스턴스가 생성되자마자 실행되는 라이프사이클 훅
     // 생성되는 시점에 해당 사이클의 내용이 실행.
     created: function() {
-        console.log(localStorage);
         if (localStorage.length > 0) {
             for (var i = 0; i < localStorage.length; i++) {
                 if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
                     this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-                };
+                }
             }
         }
     },
     methods: {
         removeTodo(todoItem, index) {
-            console.log(todoItem, index);
             localStorage.removeItem(todoItem);
             this.todoItems.splice(index, 1);
         },
-        toggleComplete(todoItem, index) {
-            console.log(todoItem, index);
+        toggleComplete(todoItem) {
             todoItem.completed = !todoItem.completed;
         },
     },

@@ -10,7 +10,7 @@
 export default {
     methods: {
         clearTodo() {
-            console.log('clear All clicked');
+            // console.log('clear All clicked');
             localStorage.clear();
         }
     },

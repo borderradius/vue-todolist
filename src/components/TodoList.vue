@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li v-for="(todoItem, index) in todoItems"                 v-bind:key="index" 
+            <li v-for="(todoItem, index) in propsdata"                 v-bind:key="index" 
                 class="shadow">
                 <i class="fas fa-check checkBtn"
                    v-bind:class="{checkBtnCompleted: todoItem.completed}"
@@ -20,22 +20,27 @@
 
 <script>
 export default {
-    data() {
-        return {
-            todoItems: [],
-        }
+    props: {
+        propsdata: {
+            type: Array,
+        },
     },
+    // data() {
+    //     return {
+    //         todoItems: [],
+    //     }
+    // },
     // 인스턴스가 생성되자마자 실행되는 라이프사이클 훅
     // 생성되는 시점에 해당 사이클의 내용이 실행.
-    created: function() {
-        if (localStorage.length > 0) {
-            for (var i = 0; i < localStorage.length; i++) {
-                if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-                    this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-                }
-            }
-        }
-    },
+    // created: function() {
+    //     if (localStorage.length > 0) {
+    //         for (var i = 0; i < localStorage.length; i++) {
+    //             if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
+    //                 this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    //             }
+    //         }
+    //     }
+    // },
     methods: {
         removeTodo(todoItem, index) {
             localStorage.removeItem(todoItem);

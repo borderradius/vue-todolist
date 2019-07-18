@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-    <TodoList 
-      v-bind:propsdata="todoItems"
-      v-on:removeItem="removeOneItem"
-      v-on:toggleItem="toggleOneItem"></TodoList>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
     <TodoFooter
       v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
@@ -18,40 +15,15 @@ import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 
 export default {
-  data () {
-    return {
-      todoItems: [],
-    }
-  },
-  // 인스턴스가 생성되자마자 실행되는 라이프사이클 훅
-  // 생성되는 시점에 해당 사이클의 내용이 실행.
-  created () {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-            this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
-    }
-  },
+  // data () {
+  //   return {
+  //     todoItems: [],
+  //   }
+  // },
   methods: {
-    addOneItem(todoItem) {
-      const obj = {completed: false, item: todoItem};
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.todoItems.push(obj);
-    },
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
-    toggleOneItem(todoItem, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
     clearAllItems() {
       localStorage.clear();
-      this.todoItems = [];
+      this.$store.state.todoItems = [];
     },
   },
   components: {

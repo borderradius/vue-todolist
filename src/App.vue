@@ -18,7 +18,7 @@ import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 
 export default {
-  data() {
+  data () {
     return {
       todoItems: [],
     }
@@ -27,7 +27,7 @@ export default {
   // 생성되는 시점에 해당 사이클의 내용이 실행.
   created () {
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
             this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
         }
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     addOneItem(todoItem) {
-      var obj = {completed: false, item: todoItem};
+      const obj = {completed: false, item: todoItem};
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
@@ -55,10 +55,10 @@ export default {
     },
   },
   components: {
-    'TodoHeader': TodoHeader,
-    'TodoInput': TodoInput,
-    'TodoList': TodoList,
-    'TodoFooter': TodoFooter,
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter,
   },
 }
 </script>

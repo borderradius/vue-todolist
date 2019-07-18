@@ -1,6 +1,6 @@
 <template>
     <transition-group name="list" tag="ul">
-        <li v-for="(todoItem, index) in propsdata"                 v-bind:key="index" 
+        <li v-for="(todoItem, index) in propsdata"                 v-bind:key="todoItem.item" 
             class="shadow">
             <i class="fas fa-check checkBtn"
                 v-bind:class="{checkBtnCompleted: todoItem.completed}"

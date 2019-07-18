@@ -13,12 +13,6 @@
                    @click="showModal = false"></i>
             </h3>
             <div slot="body">추가할 내용을 입력해주세요.</div>
-            <!-- <div slot="footer">
-                <button
-                    class="modal-default-button"
-                    @click="showModal = false"
-                    >OK1</button>
-            </div> -->
         </Modal>
     </div>
 </template>
@@ -26,8 +20,8 @@
 <script>
 import Modal from './common/Modal.vue';
 
-export default {
-    data() {
+export default { 
+    data () {
         return {
             newTodoItem: "",
             showModal: false,
@@ -47,7 +41,7 @@ export default {
         },
     },
     components: {
-        Modal: Modal
+        Modal
     }
 }
 </script>

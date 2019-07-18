@@ -45,8 +45,8 @@ export default {
         removeTodo(todoItem, index) {
             this.$emit('removeItem', todoItem, index);
         },
-        toggleComplete(todoItem) {
-            todoItem.completed = !todoItem.completed;
+        toggleComplete(todoItem, index) {
+            this.$emit('toggleItem', todoItem, index);
         },
     },
 }

@@ -1,21 +1,19 @@
 <template>
-    <div>
-        <ul>
-            <li v-for="(todoItem, index) in propsdata"                 v-bind:key="index" 
-                class="shadow">
-                <i class="fas fa-check checkBtn"
-                   v-bind:class="{checkBtnCompleted: todoItem.completed}"
-                   @click="toggleComplete(todoItem, index)"></i>
-                <span v-bind:class="{textCompleted: todoItem.completed}">
-                    {{ todoItem.item }}
-                </span>   
-                <span class="removeBtn" 
-                      @click="removeTodo(todoItem, index)">
-                    <i class="fas fa-trash-alt"></i>
-                </span>
-            </li>
-        </ul>
-    </div>
+    <transition-group name="list" tag="ul">
+        <li v-for="(todoItem, index) in propsdata"                 v-bind:key="index" 
+            class="shadow">
+            <i class="fas fa-check checkBtn"
+                v-bind:class="{checkBtnCompleted: todoItem.completed}"
+                @click="toggleComplete(todoItem, index)"></i>
+            <span v-bind:class="{textCompleted: todoItem.completed}">
+                {{ todoItem.item }}
+            </span>   
+            <span class="removeBtn" 
+                    @click="removeTodo(todoItem, index)">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </li>
+    </transition-group>
 </template>
 
 <script>
@@ -69,6 +67,13 @@ li {
     text-decoration: line-through;
     color: #b3adad;
 }
-
+/* 트랜지션 */
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="clearAllContainer">
-        <span class="clearAllBtn" @click="clearTodo">
+        <span class="clearAllBtn" @click="clearAll">
             Clear All
         </span>
     </div>
@@ -9,9 +9,8 @@
 <script>
 export default {
     methods: {
-        clearTodo() {
-            // console.log('clear All clicked');
-            localStorage.clear();
+        clearAll() {
+            this.$emit('clearAll');
         }
     },
 }

@@ -25,22 +25,6 @@ export default {
             type: Array,
         },
     },
-    // data() {
-    //     return {
-    //         todoItems: [],
-    //     }
-    // },
-    // 인스턴스가 생성되자마자 실행되는 라이프사이클 훅
-    // 생성되는 시점에 해당 사이클의 내용이 실행.
-    // created: function() {
-    //     if (localStorage.length > 0) {
-    //         for (var i = 0; i < localStorage.length; i++) {
-    //             if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-    //                 this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-    //             }
-    //         }
-    //     }
-    // },
     methods: {
         removeTodo(todoItem, index) {
             this.$emit('removeItem', todoItem, index);

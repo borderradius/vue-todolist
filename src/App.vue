@@ -21,10 +21,10 @@ export default {
   //   }
   // },
   methods: {
-    clearAllItems() {
-      localStorage.clear();
-      this.$store.state.todoItems = [];
-    },
+    // clearAllItems() {
+    //   localStorage.clear();
+    //   this.$store.state.todoItems = [];
+    // },
   },
   components: {
     TodoHeader,

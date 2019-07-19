@@ -3,8 +3,11 @@
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
     <TodoList></TodoList>
-    <TodoFooter
-      v-on:clearAll="clearAllItems"></TodoFooter>
+    <TodoFooter></TodoFooter>
+    <button @click="clickBtn">popup message</button>
+    <button @click="delayClickBtn">delay popup message</button>
+    <hr>
+    <Demo></Demo>
   </div>
 </template>
 
@@ -13,16 +16,21 @@ import TodoHeader from './components/TodoHeader.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
+import Demo from './components/Demo';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
-  // data () {
-  //   return {
-  //     todoItems: [],
-  //   }
-  // },
+  computed: {
+    ...mapState(['message']),
+    ...mapGetters(['reverseMessage']),
+  },
   methods: {
-    // clearAllItems() {
-    //   localStorage.clear();
+    ...mapMutations(['clickBtn']),
+    ...mapActions(['delayClickBtn']),
+    authLogin() {},
+    displayTable() {},
+    //  clearAllItems() {
+    //   localStorage. clear();
     //   this.$store.state.todoItems = [];
     // },
   },
@@ -31,6 +39,7 @@ export default {
     TodoInput,
     TodoList,
     TodoFooter,
+    Demo,
   },
 }
 </script>

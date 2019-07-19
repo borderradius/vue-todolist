@@ -1,17 +1,22 @@
 <template>
 	<div class="clearAllContainer">
-		<span class="clearAllBtn" @click="clearAll">
+		<span class="clearAllBtn" @click="clearAllItem">
 			Clear All
 		</span>
 	</div>
 </template>
 
 <script>
-export default {
+import { mapMutations } from 'vuex';
+
+export default { 
 	methods: {
-		clearAll() {
-			this.$store.commit('clearAllItem');
-		}
+		...mapMutations([
+			'clearAllItem',
+		])
+		// clearAll() {
+		// 	this.$store.commit('clearAllItem');
+		// }
 	},
 }
 </script>
